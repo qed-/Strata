@@ -78,7 +78,7 @@ public class SabrInarrearsVolatilityFunctionTest {
     double gamma2 = 3 * RHO * RHO * (TAU1_BEFORE - TAU0_BEFORE) * (TAU1_BEFORE - TAU0_BEFORE) *
         (3 * tau2 - tau12 + 5 * tau02 + 4 * TAU0_BEFORE * TAU1_BEFORE) / (7 * 25);
     double gamma = gamma1 + gamma2;
-    double rhoHat = RHO * (3 * tau2 + 2 * tau02 * tau12) / (Math.sqrt(gamma) * 10);
+    double rhoHat = RHO * (3 * tau2 + 2 * tau02 + tau12) / (Math.sqrt(gamma) * 10);
     double nuHat2 = NU * NU * gamma * 3 / (tau3 * TAU1_BEFORE);
     double nuHat = Math.sqrt(nuHat2);
     double h = NU * NU * (tau2 + 2 * tau02 + tau12) / (4 * TAU1_BEFORE * tau) - nuHat2;
@@ -94,8 +94,8 @@ public class SabrInarrearsVolatilityFunctionTest {
   /* Formula for tau_0 <= 0 and q != 1. */
   @Test
   public void after_formula() {
-    double zeta = 3.0d / (4 * Q_OTHER + 3) 
-        * (1.0d / (2 * Q_OTHER + 1) + Math.pow(RHO, 2) * 2 * Q_OTHER / Math.pow(3 * Q_OTHER + 2, 2));
+    double zeta = 3.0d / (4 * Q_OTHER + 3) *
+        (1.0d / (2 * Q_OTHER + 1) + Math.pow(RHO, 2) * 2 * Q_OTHER / Math.pow(3 * Q_OTHER + 2, 2));
     double rhoHat = 2 * RHO / (Math.sqrt(zeta) * (3 * Q_OTHER + 2));
     double nuHat2 = Math.pow(NU, 2) * zeta * (2 * Q_OTHER + 1);
     double nuHat = Math.sqrt(nuHat2);

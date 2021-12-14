@@ -77,7 +77,9 @@ public final class SabrInarrearsVolatilityFunction
     double gamma2 = 3 * q * rho * rho * (tau1 - tau0) * (tau1 - tau0) *
         (3 * tau2 - tau12 + 5 * q * tau02 + 4 * tau0 * tau1) / ((4 * q + 3) * (3 * q + 2) * (3 * q + 2));
     double gamma = gamma1 + gamma2;
-    double rhoHat = rho * (3 * tau2 + 2 * q * tau02 * tau12) / (Math.sqrt(gamma) * (6 * q + 4));
+    double rhoHat = rho *
+        (3 * tau2 + 2 * q * tau02 + tau12) /
+        (Math.sqrt(gamma) * (6 * q + 4));
     double nuHat2 = nu * nu * gamma * (2 * q + 1) / (tau3 * tau1);
     double nuHat = Math.sqrt(nuHat2);
     double h = nu * nu * (tau2 + 2 * q * tau02 + tau12) / (2 * tau1 * tau * (q + 1)) - nuHat2;
@@ -217,7 +219,7 @@ public final class SabrInarrearsVolatilityFunction
     double gamma2 = 3 * q * rho * rho * (tau1 - tau0) * (tau1 - tau0) *
         (3 * tau2 - tau12 + 5 * q * tau02 + 4 * tau0 * tau1) / ((4 * q + 3) * (3 * q + 2) * (3 * q + 2));
     double gamma = gamma1 + gamma2;
-    double rhoHat = rho * (3 * tau2 + 2 * q * tau02 * tau12) / (Math.sqrt(gamma) * (6 * q + 4));
+    double rhoHat = rho * (3 * tau2 + 2 * q * tau02 + tau12) / (Math.sqrt(gamma) * (6 * q + 4));
     double nuHat2 = nu * nu * gamma * (2 * q + 1) / (tau3 * tau1);
     double nuHat = Math.sqrt(nuHat2);
     double h = nu * nu * (tau2 + 2 * q * tau02 + tau12) / (2 * tau1 * tau * (q + 1)) - nuHat2;
@@ -280,8 +282,8 @@ public final class SabrInarrearsVolatilityFunction
     double rhoHatBarRho = 1.0;
     double rhoBarRho = rhoHat / rho * rhoHatBarRho;
     double tau2BarRho = rho * 3 / (Math.sqrt(gamma) * (6 * q + 4)) * rhoHatBarRho;
-    double tau02BarRho = rho * 2 * q * tau12 / (Math.sqrt(gamma) * (6 * q + 4)) * rhoHatBarRho;
-    double tau12BarRho = rho * 2 * q * tau02 / (Math.sqrt(gamma) * (6 * q + 4)) * rhoHatBarRho;
+    double tau02BarRho = rho * 2 * q / (Math.sqrt(gamma) * (6 * q + 4)) * rhoHatBarRho;
+    double tau12BarRho = rho / (Math.sqrt(gamma) * (6 * q + 4)) * rhoHatBarRho;
     double gammaBarRho = -0.5 * rhoHat / gamma * rhoHatBarRho;
     double gamma1BarRho = gammaBarRho;
     double gamma2BarRho = gammaBarRho;
